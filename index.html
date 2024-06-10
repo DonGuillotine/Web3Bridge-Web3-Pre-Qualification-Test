@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Co-working Space Booking System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Co-working Space Booking System</h1>
+        <p>Book your desk with different membership tiers and enjoy our services.</p>
+    </header>
+    <main>
+        <section id="desks">
+            <h2>Available Desks</h2>
+            <div class="desk-layout">
+                
+            </div>
+        </section>
+        <section id="booking-form">
+            <h2>Book a Desk</h2>
+            <form id="booking">
+                <label for="desk">Desk Number:</label>
+                <select id="desk" required></select>
+                
+                <label for="membership">Membership Tier:</label>
+                <select id="membership" required>
+                    <option value="basic">Basic</option>
+                    <option value="premium">Premium</option>
+                    <option value="executive">Executive</option>
+                </select>
+                
+                <label for="hours">Number of Hours:</label>
+                <input type="number" id="hours" min="1" max="12" required>
+                
+                <button type="submit">Book Now</button>
+            </form>
+            <div id="total-cost"></div>
+        </section>
+    </main>
+    <footer>
+        <h2>Revenue Dashboard</h2>
+        <div id="dashboard">
+            
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
