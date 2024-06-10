@@ -5,10 +5,13 @@ const pricing = {
 };
 const revenue = { basic: 0, premium: 0, executive: 0, team: 0 };
 
+let revenueChart; 
+
 document.addEventListener('DOMContentLoaded', () => {
     renderDesks();
     populateDeskOptions();
     document.getElementById('booking').addEventListener('submit', handleBooking);
+    renderDashboard();
 });
 
 function generateDesks(total, individualCount) {
@@ -109,6 +112,11 @@ function updateTotalCost(cost) {
 }
 
 function updateDashboard() {
+    renderDashboard();
+    renderGraph();
+}
+
+function renderDashboard() {
     const dashboard = document.getElementById('dashboard');
     dashboard.innerHTML = `
         <div class="dashboard-item">Basic: $${revenue.basic.toFixed(2)}</div>
@@ -119,17 +127,47 @@ function updateDashboard() {
 }
 
 function displaySuccessMessage(message) {
+    displayMessage(message, 'success-message');
+}
+
+function displayErrorMessage(message) {
+    displayMessage(message, 'error-message');
+}
+
+function displayMessage(message, className) {
     const messageDiv = document.createElement('div');
-    messageDiv.className = 'success-message';
+    messageDiv.className = className;
     messageDiv.textContent = message;
     document.body.appendChild(messageDiv);
     setTimeout(() => messageDiv.remove(), 3000);
 }
 
-function displayErrorMessage(message) {
-    const messageDiv = document.createElement('div');
-    messageDiv.className = 'error-message';
-    messageDiv.textContent = message;
-    document.body.appendChild(messageDiv);
-    setTimeout(() => messageDiv.remove(), 3000);
+function renderGraph() {
+    const ctx = document.getElementById('revenueChart').getContext('2d');
+
+    if (revenueChart) {
+        revenueChart.destroy(); 
+    }
+
+    const chartData = {
+        labels: ['Basic', 'Premium', 'Executive', 'Team'],
+        datasets: [{
+            label: 'Revenue',
+            data: [revenue.basic, revenue.premium, revenue.executive, revenue.team],
+            backgroundColor: ['#4CAF50', '#2196F3', '#FF9800', '#9C27B0']
+        }]
+    };
+
+    revenueChart = new Chart(ctx, {
+        type: 'bar',
+        data: chartData,
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
 }
