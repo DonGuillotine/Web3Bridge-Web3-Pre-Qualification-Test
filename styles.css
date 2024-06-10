@@ -1,0 +1,87 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header, footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+}
+
+main {
+    flex: 1;
+    padding: 1em;
+}
+
+#desks, #booking-form {
+    margin-bottom: 2em;
+}
+
+.desk-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.desk {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #333;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.desk.individual {
+    background-color: #4CAF50;
+}
+
+.desk.team {
+    background-color: #FF9800;
+}
+
+.desk.booked {
+    background-color: #F44336;
+    cursor: not-allowed;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-top: 10px;
+}
+
+form select, form input, form button {
+    margin-top: 5px;
+    padding: 8px;
+}
+
+#total-cost {
+    margin-top: 10px;
+    font-size: 1.2em;
+}
+
+#dashboard {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.dashboard-item {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    flex: 1;
+    margin: 5px;
+}
