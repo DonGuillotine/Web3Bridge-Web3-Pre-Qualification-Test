@@ -140,3 +140,7 @@ form button:hover {
     background-color: #F44336;
     color: white;
 }
+
+.center{
+    text-align: center;
+}
